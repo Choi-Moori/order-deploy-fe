@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-row>
+        <v-row justify="center">
             <v-col>
                 <v-card>
                     <v-card-title class="text-center text-h5">
@@ -24,19 +24,29 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            tableHeaders:[ {title:'ID', key: 'id', align:'start'},
-                           {title:'이름', key: 'name', align:'start'},
-                           {title:'이메일', key: 'email', align:'start'} ],
+            tableHeaders:[ {title:'ID', key: 'id'},
+                           {title:'이름', key: 'name'},
+                           {title:'이메일', key: 'email'},
+                           {title:'주문수량', key: 'orderCount'} ],
             memberList:[],                           
         }
     },
-    async created(){
-        const token = localStorage.getItem('token');
-        const headers = {Authorization : `Bearer ${token}`};
-        // http 룰
-        // {headers(라는 이름의) : {Authorization: 'Bearer 토큰값'}}
-        const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {"headers":headers})
-        this.memberList = response.data.result.content;
+    async created() {
+        // const token = localStorage.getItem('token');
+        // {headers: {Authorization: 'Bearer 토큰 값'}}}
+        // const headers = {Authorization: `Bearer ${token}`};
+        // const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {headers});
+
+        // main.js에 추가하면서 토큰 꺼내오는 부분 주석 
+        try {
+            const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`);
+            this.memberList = response.data.result.content; // setting 
+        }catch(e){
+            console.log(e);
+        }
     }
 }
 </script>
+
+<style>
+</style>

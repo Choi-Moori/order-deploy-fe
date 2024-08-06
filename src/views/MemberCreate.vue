@@ -94,7 +94,6 @@
                 // 위에 async await 안해주면 회원가입 등록이 다 안되는데 다음코드로 가버림 
                 // async-await로 할 때까지 기다려~ 시켜야함 
                 this.$router.push("/");
-                
             } catch (e) {
                 this.errorMessage = e.response.data.error_message;
                 console.log(e.response.data.error_message)

@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<script>
+<script>    
 import axios from 'axios';
 
 export default {
@@ -34,6 +34,7 @@ export default {
             memberList: []
         }
     },
+    // 화면이 열리기 전에 Data를 받아와 준다.
     async created(){
         const response = await axios.get('http://localhost:8080/rest/member/list');
         this.memberList = response.data.result;

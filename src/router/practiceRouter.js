@@ -3,7 +3,9 @@ import VuetifyComponent from '@/components/practice/VuetifyComponent'
 import ModelingComponent from '@/components/practice/ModelingComponent'
 import ConditionalComponent from '@/components/practice/ConditionalComponent'
 import HookComponent from '@/components/practice/HookComponent'
+import WatchUpdateComponent from '@/components/practice/WatchUpdateComponent'
 import AxiosTestComponent from '@/components/practice/AxiosTestComponent'
+import RouterTestComponent from '@/components/practice/RouterTestComponent'
 
 export const practiceRouter = [
     {
@@ -27,8 +29,18 @@ export const practiceRouter = [
         component: HookComponent
     },
     {
+        path: '/practice/hooks-watch-update',
+        name: 'WatchUpdateComponent',
+        component: WatchUpdateComponent
+    },
+    {
         path: '/practice/axiostest',
         name: 'AxiosTestComponent',
         component: AxiosTestComponent
+    },
+    {
+        path: '/practice/routertest',
+        name: 'RouterTestComponent',
+        component: RouterTestComponent
     }
 ]

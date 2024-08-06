@@ -1,9 +1,9 @@
 <template>
-    <h1>this is homecomponent</h1>
+    <h1>hello world</h1>
 </template>
 
 <script>
 export default {
-
-};
+    
+}
 </script>

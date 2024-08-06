@@ -25,7 +25,7 @@
             <v-row>
                 <v-simple-table>
                     <thead>
-                        <tr>
+                        <tr> 
                             <th>이름</th>
                             <th>이메일</th>
                         </tr>

@@ -3,7 +3,7 @@
         <!-- HTML요소의 동적 값 표시 -->
         <!-- HTML 요소 안에 중괄호 2번을 사용함으로 script에 정의된 변수값을 화면에 표시 -->
         <h1>hello world {{language}}</h1>
-        <!-- :model은 양방향 데이터 바인딩 -->
+        <!-- :value문법을 사용하면 단방향 데이터 바인딩 -->
         <input type="text" :value="value1">
         <!-- v-model문법을 사용하면 양방향 데이터 바인딩 -->
         <input type="text" v-model="value2">

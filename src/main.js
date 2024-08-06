@@ -4,7 +4,9 @@ import App from './App.vue'
 // src/router/index.js 파일의 router를 사용하겠다는 선언.
 import router from '@/router/index.js'
 // vuetify를 사용하겠다는 선언.
-import vuetify from '@/plugins/vuetify.js';
+import vuetify from '@/plugins/vuetify.js'; 
+import '@mdi/font/css/materialdesignicons.css'
+
 
 // createApp(App).mount('#app')
 const app = createApp(App);

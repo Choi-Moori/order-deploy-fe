@@ -7,6 +7,7 @@
     import { practiceRouter } from "./practiceRouter";
     import { memberRouter } from "./memberRouter";
     import { productRouter} from "./productRouter";
+    import { orderRouter } from "./orderRouter";
 
     const routes = [
         // {
@@ -25,6 +26,7 @@
         ...practiceRouter,
         ...memberRouter,
         ...productRouter,
+        ...orderRouter,
     ]
 
     const router = createRouter({

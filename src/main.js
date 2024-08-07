@@ -49,6 +49,7 @@ axios.interceptors.response.use(
                 window.location.href = "/login"; // refresh token까지 만료됐으면 로그인화면으로 
             }
         }
+        return Promise.reject(error)
     }
 )
 

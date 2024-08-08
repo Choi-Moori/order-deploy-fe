@@ -82,12 +82,14 @@
                 const token = response.data.result.token;
                 const refreshToken = response.data.result.refreshToken;
                 const role = jwtDecode(token).role;
-                console.log(jwtDecode(token).role);
                 localStorage.setItem('token', token);
                 localStorage.setItem('refreshToken', refreshToken);
                 localStorage.setItem('role', role);
 
                 // this.$router.push("/");
+                // sse를 위한 연결 코드
+                    
+
                 window.location.href="/"; 
             } catch(e) {
                 const errorMessage = e.response.data.error_message;

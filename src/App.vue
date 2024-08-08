@@ -13,9 +13,10 @@
         <VuetifyComponent />
         <ModelingComponent />
       </v-main>
+      <FooterComponent />
     </v-app>
   </div>
-  <!-- <FooterComponent /> -->
+  
 </template>
 
 <script>
@@ -24,14 +25,14 @@
 // App.vue 는 Vue애플리케이션의 루트 컴포턴트(재활용이 가능한 화면)
 //  import HelloWorld from './components/HelloWorld.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
-// import FooterComponent from './components/FooterComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-    HeaderComponent
-    // HeaderComponent, FooterComponent
+    // HeaderComponent
+    HeaderComponent, FooterComponent
     // VuetifyComponent,
   }
 }

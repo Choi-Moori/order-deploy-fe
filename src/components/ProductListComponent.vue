@@ -24,7 +24,7 @@
                 </v-form>
             </v-col>
             <v-col cols="auto" v-if="!isAdmin" align-self="center">
-                <v-btn color="secondary" class="mr-2">장바구니</v-btn>
+                <v-btn @click="addCart" color="secondary" class="mr-2">장바구니</v-btn>
                 <v-btn @click="createOrder" color="secondary">주문하기</v-btn>
             </v-col>
             <v-col cols="auto" v-if="isAdmin" align-self="center">
@@ -82,6 +82,7 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 export default {
     props: [
         'isAdmin',
@@ -118,6 +119,9 @@ export default {
     beforeUnmount(){
         window.removeEventListener('scroll', this.scrollPagination);
     },  
+    computed:{
+        ...mapGetters(['getProductsInCart'])
+    },
     methods: {
         deleteProduct(productId) {
             console.log(productId)
@@ -178,6 +182,17 @@ export default {
             if(isBottom && !this.isLastPage && !this.isLoading){
                 this.loadProduct();
             }
+        },
+        addCart(){
+            const orderProducts = Object.keys(this.selected) 
+                                        .filter(key=>this.selected[key])
+                                        .map(key=>{
+                                            const product = this.productList.find(p=>p.id==key)
+                                            return {id:product.id, name:product.name, quantity:product.quantity};
+                                        });
+            orderProducts.forEach(p => p.quantity > 0 && this.$store.dispatch('addCart', p));
+            // window.location.reload();
+            console.log( this.getProductsInCart );
         },
         async createOrder() { // 주문하기 버튼 클릭 후 호출
             // 객체에서 key값 뽑아내고 그 중 true인 key만 뽑아냄 

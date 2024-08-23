@@ -35,9 +35,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with: 
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
-          aws-secret-access-key-id: ${{secrets.AWS_SECRET}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET}}
           aws-region: "ap-northeast-2"
-      
       
       - name: clear s3 bucket
       # --recursive 파일안의 파일안의 파일안의 지우겠다 -> 모든 파일을 지우겠다.

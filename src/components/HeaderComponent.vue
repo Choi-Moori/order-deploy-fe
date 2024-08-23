@@ -7,7 +7,9 @@
                     <div v-if="userRole === 'ADMIN'">
                         <v-btn :to="{ path: '/member/list' }">회원관리</v-btn>
                         <v-btn :to="{ path: '/product/manage' }">상품관리</v-btn>
-                        <v-btn :to="{ path: '/order/list' }">실시간주문</v-btn>
+                        <!-- :to= {path} 는 경로만 바꿔준다? 맞을거야 -->
+                         <!-- href 는 해당 경로로 이동한다.(reload됨) -->
+                        <v-btn href="/order/list">실시간주문({{liveQuantity}})</v-btn>
                     </div>
                     </v-col>
                 <v-col class="text-center">
@@ -37,7 +39,8 @@ export default {
     data(){
         return{
             userRole: null,
-            isLogin: false
+            isLogin: false,
+            liveQuantity:0
         }
     },
     computed:{
@@ -57,6 +60,14 @@ export default {
             sse.addEventListener('connect', (event) => {
                 console.log(event)
             });
+            sse.addEventListener('ordered', (event) => {
+                console.log(event.data)
+                this.liveQuantity++;
+            });
+            sse.onerror = (error) =>{
+                console.log(error);
+                sse.close();
+            }
         }
     },
     methods:{

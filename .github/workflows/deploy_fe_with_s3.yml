@@ -29,5 +29,16 @@ jobs:
       - name: npm build
         working-directory: .
         run: npm run build
+      
+      # cli를 여기서 해줘야 aws에 접근 권한이 생긴다.
+      - name: setup aws cli
+        uses: aws-actions/configure-aws-credentials@v2
+        with: 
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+          aws-secret-access-key-id: ${{secrets.AWS_SECRET}}
+      
+      - name: clear s3 bucket
+      # --recursive 파일안의 파일안의 파일안의 지우겠다 -> 모든 파일을 지우겠다.
+        run: aws s3 rm s3://www.moori98.shop/ --recursive
 
         

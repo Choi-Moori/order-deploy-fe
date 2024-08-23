@@ -43,7 +43,7 @@ jobs:
         run: aws s3 rm s3://www.moori98.shop/ --recursive
       - name: deploy to s3
       # --recursive rm -> cp 복사해주겠다
-        run: aws s3 cp s3://www.moori98.shop/ --recursive
+        run: aws s3 cp ./dist s3://www.moori98.shop/ --recursive
 
       - name: invalidate cloudfront caches
         run: aws cloudfront create-invalidation --distribution-id E14CCIXC2RHD4S --paths "/*"

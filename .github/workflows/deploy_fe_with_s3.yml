@@ -3,7 +3,7 @@ name: deploy to aws s3
 on:
   push:
     branches:
-      - dev
+      - main
 jobs:
   # 워크 플로우는 하나 이상의 작업(job)으로 구성. 여기서는 하나의 작업만을 정의
   build-and-deploy:
@@ -44,5 +44,4 @@ jobs:
       - name: deploy to s3
       # --recursive rm -> cp 복사해주겠다
         run: aws s3 cp ./dist s3://www.moori98.shop/ --recursive
-        
         

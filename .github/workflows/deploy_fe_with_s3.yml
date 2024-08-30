@@ -44,4 +44,8 @@ jobs:
       - name: deploy to s3
       # --recursive rm -> cp 복사해주겠다
         run: aws s3 cp ./dist s3://www.moori98.shop/ --recursive
-        
+
+      # 캐시 지워주는 무효화 작업
+      - name: invalidate cloudfront cache
+      # id 는 cloudfront 의 이름
+        run: aws cloudfront create-invalidation --distribution-id E1LD73C809J6AB --paths "/*"
